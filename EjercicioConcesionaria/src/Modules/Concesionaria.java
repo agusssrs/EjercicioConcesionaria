@@ -6,20 +6,26 @@ import java.util.List;
 public class Concesionaria {
 	private String nombre;
 	private List<Auto> autos;
+	private int proximoIdAuto;
 	
 	public Concesionaria(String nombre) {
 		this.nombre = nombre;
 		autos = new ArrayList<Auto>();
+		this.proximoIdAuto = 0;
 	}
 	
 	public boolean agregarAuto(String marca, String modelo, int anio, double precio) {
+		/*
 		int idAuto = 0;
 		
 		if(autos.size() > 0) {
 			idAuto = autos.get(autos.size() - 1).getIdAuto() + 1;
 		}
+		*/
 		
-		return autos.add(new Auto(idAuto, marca, modelo, anio, precio));
+		Auto nuevo = new Auto(proximoIdAuto, marca, modelo, anio, precio);
+		proximoIdAuto++;
+		return autos.add(nuevo);
 	}
 	
 	public Auto traerAuto(int idAuto) {
